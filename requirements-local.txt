@@ -1,0 +1,11 @@
+# Minimal set to run on your own PC: data split, metrics, tests, statistics, plots.
+# No GPU, no git, no big downloads.   pip install -r requirements-local.txt
+sacrebleu>=2.4
+pyyaml
+numpy
+pandas
+openpyxl
+scipy
+statsmodels
+scikit-learn
+matplotlib

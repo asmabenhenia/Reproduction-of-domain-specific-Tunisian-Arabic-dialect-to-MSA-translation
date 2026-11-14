@@ -1,0 +1,4 @@
+# COMET / COMETKiwi / BLEURT (paper 6.11). Needs internet + GitHub access; install on Kaggle:
+#   pip install -r requirements-neural.txt
+unbabel-comet
+bleurt-pytorch @ git+https://github.com/lucadiliello/bleurt-pytorch.git

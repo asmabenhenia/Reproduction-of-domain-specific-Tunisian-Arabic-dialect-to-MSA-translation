@@ -1,0 +1,12 @@
+# Training / generation environment (use on Kaggle with internet ON).
+#   pip install -r requirements.txt
+# The two neural-metric packages are in requirements-neural.txt (installed separately).
+-r requirements-local.txt
+torch
+transformers>=4.44
+accelerate
+peft>=0.12
+bitsandbytes>=0.43      # 4-bit QLoRA: Linux + CUDA only (Kaggle yes, Windows PC no)
+datasets
+sentencepiece
+protobuf

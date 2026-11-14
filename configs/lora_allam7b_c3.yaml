@@ -1,0 +1,46 @@
+# Paper Table 5, Config 3 -- allam7b   (one file = one experiment)
+name: lora_allam7b_c3
+model_id: humain-ai/ALLaM-7B-Instruct-preview
+trust_remote_code: true
+paper_table: table8_lora
+seed: 42
+splits_dir: data/splits
+
+quantization:            # NOT in paper; forced by 16 GB T4 GPUs (DECISIONS D3)
+  load_in_4bit: true
+  quant_type: nf4
+  double_quant: true
+  compute_dtype: float16 # T4 has no bf16 (DECISIONS D9)
+
+lora:
+  r: 16
+  alpha: 32               # paper 5.3: alpha = 2r
+  dropout: 0.1
+  target_modules: [q_proj, v_proj]   # paper 5.3 (authors' code used all 7 linear layers, D4)
+  bias: none
+
+training:
+  learning_rate: 3.0e-4      # paper 5.3
+  optimizer: paged_adamw_8bit # authors' code (paper says AdamW)
+  lr_scheduler: cosine        # authors' code
+  warmup_steps: 100           # authors' code
+  weight_decay: 0.1
+  max_epochs: 5
+  per_device_batch_size: 4    # authors' code
+  grad_accum_steps: 4         # effective batch 16
+  max_seq_length: 512         # authors' code
+  gradient_checkpointing: true
+  eval_steps: 100
+  save_steps: 100
+
+early_stopping:
+  enabled: true
+  patience: 1
+  metric: eval_bleu              # 'eval_bleu' (char-level BLEU on val) or 'eval_loss'
+  greater_is_better: true
+
+decoding:                    # paper 5.3
+  do_sample: false
+  max_new_tokens: 128
+  repetition_penalty: 1.1
+  num_beams: 1

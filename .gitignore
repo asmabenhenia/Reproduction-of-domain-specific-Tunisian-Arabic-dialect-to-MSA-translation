@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# model weights / checkpoints are large: keep them out of git
+*.safetensors
+*.bin
+checkpoint-*/
+outputs_tmp/
+.env
+checkpoints/
+results/_dryrun/

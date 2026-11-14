@@ -1,0 +1,7 @@
+# Paper 6.1 / Table 6
+name: zeroshot
+paper_table: table6_zeroshot
+models: [allam7b, llama3_8b, mistral7b]   # model ids as in lora_*.yaml
+prompt: "native per-model format, see zeroshot_prompt() in src/data.py"   # D5
+quantization: {load_in_4bit: true, quant_type: nf4, compute_dtype: float16}
+decoding: {do_sample: false, max_new_tokens: 128, repetition_penalty: 1.1}

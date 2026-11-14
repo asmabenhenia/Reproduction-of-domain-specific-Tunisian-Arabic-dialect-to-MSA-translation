@@ -1,0 +1,32 @@
+# Paper Table 4 -- arat5v2 full fine-tuning
+name: seq2seq_arat5v2
+model_id: UBC-NLP/AraT5v2-base-1024
+paper_table: table7_seq2seq
+seed: 42
+splits_dir: data/splits
+source_prefix: "ترجم من اللهجة التونسية إلى العربية الفصحى: "      # authors' code; not in paper (D7)
+
+training:
+  learning_rate: 5.0e-4 # paper Table 4 (5e-4 for both)
+  lr_sweep: [5.0e-4]
+  max_epochs: 10
+  early_stopping_patience: 3
+  early_stopping_metric: eval_loss   # authors' code (paper silent)
+  per_device_batch_size: 16
+  grad_accum_steps: 2                # effective batch 32
+  lr_scheduler: cosine
+  warmup_steps: 200
+  weight_decay: 0.01
+  max_source_length: 128
+  max_target_length: 128
+  precision: fp32
+  eval_steps: 100
+  save_steps: 200
+  # note:  fp32 training: T5 is unstable in fp16 and there is no bf16 on T4 (DECISIONS D9)
+
+decoding:                            # authors' code; not in paper (D8)
+  num_beams: 4
+  early_stopping: true
+  no_repeat_ngram_size: 3
+  length_penalty: 1.0
+  max_new_tokens: 128

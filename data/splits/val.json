@@ -1,0 +1,752 @@
+[
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة الميقات متاع أهل تونس؟",
+    "output": "ما هو ميقات أهل تونس؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "تنجم لمرا تنشر أسرار راجلها على وسايل التواصل الاجتماعي؟",
+    "output": "هل يجوز للزوجة نشر أسرار زوجها على وسائل التواصل الاجتماعي؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " يورثوا الصغار من فلوس أمهم المهر الي رجعتو لراجلها؟",
+    "output": "هل يرث الأبناء من أموال أمهم المهر الذي أعادته لزوجها؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " نجم نعطي الزكاة باش نغطي نفقات عرس شاب فقير؟",
+    "output": "هل يجوز إعطاء الزكاة لتغطية نفقات زواج شاب فقير؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "  ينجم المسافر يجمع بين صلاتين فلمطار؟",
+    "output": "هل يجوز للمسافر الجمع بين صلاتين في المطار؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " ينجم الصايم يستعمل لصقة النيكوتين باش ينحي الدخان؟",
+    "output": "هل يجوز للصائم استخدام لصقة النيكوتين لترك التدخين؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الحوت اللي ميت فلبحر، حلال لينا ناكلوه ولا لازم يتذبح؟",
+    "output": "السمك الميت في البحر، هل يحل لنا أكله أم يجب ذبحه؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "النبي وصى على سابع جار، بالرسمي ثمة حديث هكة؟",
+    "output": "لقد أوصى النبي صلى الله عليه وسلم بالجار، فهل هناك حديث بهذا الشأن؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " نجموا نعطيو الزكاة لتأهيل محتاج باش يتحصل على شهادة؟",
+    "output": "هل يجوز إعطاء الزكاة لتأهيل محتاج للحصول على شهادة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم صلاة التوبة وكيفاش تتم؟",
+    "output": "ما حكم صلاة التوبة وكيف تُؤدى؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم الأضحية",
+    "output": "ما حكم الأضحية"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " شنو حكم الصلاة بالبرفانات القوية؟",
+    "output": " ما حكم الصلاة بالعطور القوية؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الصيام في ظل الظروف المناخية القاسية برشا؟",
+    "output": "ما حكم الصيام في ظل الظروف المناخية القاسية جدًا؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "التواصل المستمر بين الإخوة يحفظ المودة",
+    "output": "التواصل المستمر بين الإخوة يحفظ المودة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الزكاة على الخلاص الشهري قبل صرفه؟",
+    "output": "ما حكم الزكاة على المرتب الشهري قبل صرفه؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " نجم ناخذ بأيسر الأقوال؟",
+    "output": "هل يجوز الأخذ بأيسر الأقوال في الفقه؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم الخلع",
+    "output": "ما حكم الخلع"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم لبسان اللنتيات للي عندو نقص نظر؟",
+    "output": "ما حكم لبس العدسات اللاصقة لمن يعاني من ضعف النظر؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "علاش لازم نغطي الراس في الصلاة؟",
+    "output": "لماذا يجب تغطية الرأس في الصلاة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ربي هو اللي يقدر البركة فلعمر وفي الرزق.",
+    "output": "الله هو الذي يقدر البركة في العمر وفي الرزق."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش يتم الطلاق الشرعي؟",
+    "output": "كيف يتم الطلاق الشرعي؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فين نلقى أذكار النوم؟",
+    "output": "أين أجد أذكار النوم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نصلي الوتر؟",
+    "output": "كيف تُصلى صلاة الوتر؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " تنجم المرا تطلب الطلاق على خاطر راجلها فقير برشة؟",
+    "output": "هل يجوز للزوجة طلب الخلع بسبب فقر زوجها الشديد؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "بر الوالدين يقربنا لربي برشة.",
+    "output": "بر الوالدين يقربنا من الله كثيراً."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الجنة فيها قصور من ذهب وفضة وملاطها مسك.",
+    "output": "الجنة فيها قصور من ذهب وفضة وملاطها المسك."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الركوع واجب في الصلاة",
+    "output": "الركوع واجب في الصلاة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجمو ندفنو الميت في جنينة الدار؟",
+    "output": "هل يجوز دفن الميت في حديقة المنزل؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الصيام لازم في رمضان",
+    "output": "الصيام واجب في رمضان"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم المشي فوق القبورات ولا القعدان عليها؟",
+    "output": "ما حكم المشي فوق القبور أو الجلوس عليها؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نقرا القرآن بصوت عالي في الليل؟",
+    "output": "هل يجوز أن أقرأ القرآن بصوت عال في الليل؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "سيدنا محمد صلى الله عليه وسلم هو قدوتنا في كل شيء.",
+    "output": "سيدنا محمد صلى الله عليه وسلم هو قدوتنا في كل شيء."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "القرآن هو النور الي يهدي للحق ولطريق المستقيم.",
+    "output": "القرآن هو النور الذي يهدي إلى الحق وإلى طريق مستقيم."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نصلي قاعد",
+    "output": "هل يجوز لي الصلاة جالسا"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نتعامل مع النوم فصلاة؟",
+    "output": "كيف أتعامل مع النوم أثناء الصلاة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شكونهم أمهات المؤمنين الي ماتو في حياة النبي؟",
+    "output": "من هنّ أمهات المؤمنين اللواتي توفين في حياة النبي صلى الله عليه وسلم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نقرى نفس السورة في الركعات الكل؟",
+    "output": "هل يجوز الصلاة بنفس السورة في كل الركعات ؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " يصير البيعان بالتقسيط بالفايدة؟",
+    "output": "هل يجوز البيع بالتقسيط بفائدة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الطفل اللي رضع من مرا، هل عيلتو الكل يوليوا محارم ليها؟",
+    "output": "الطفل الذي رضع من امرأة، هل تصبح عائلته كلها محارم لها؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم البو الي يفرق بين ولادو في الورثة ولا في العطية؟",
+    "output": "ما حكم الأب الذي يميز بين أبنائه في الميراث أو في الهبات؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فماش دعا نقولوه كي نلبسو حوايج جديدة؟",
+    "output": "هل هناك دعاء يقال عند لبس ثياب جديدة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الصلاة  منغير  غسل اليدين بعد الماكلة؟",
+    "output": "ما حكم الصلاة بدون غسل اليدين بعد الأكل؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "وقتاش يبدا وقت صلاة الوتر؟",
+    "output": "متى يبدأ وقت صلاة الوتر؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فين نلقى أحكام سجود السهو؟",
+    "output": "أين أجد أحكام سجود السهو؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ياخي لازم نتوضا قبل كل صلاة؟",
+    "output": "هل يجب الوضوء قبل كل صلاة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة فرائض الصلاة",
+    "output": "ما هي فرائض الصلاة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ربي هو الغفار، يغفر الذنوب مرة بعد مرة.",
+    "output": "الله هو الغفار، يغفر الذنوب مرة تلو الأخرى."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " نجم نقدم زكاة الفطر بجمعة؟",
+    "output": "هل يجوز تقديم زكاة الفطر بأسبوع؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الزكاة واجبة على كل واحد",
+    "output": "الزكاة واجبة على كل أحد"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم اللي تعمل عملية باش تبدل ملامحها بالكل؟",
+    "output": "ما حكم من تجري عمليات جراحية لتغيير ملامحها تماماً؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "سيدنا عيسى ما تقتلش وما تصلبش اما رفعو ربي لعندو.",
+    "output": "سيدنا عيسى لم يُقتل ولم يُصلب بل رفعه الله إليه."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "حب النبي صلى الله عليه وسلم من تمام توحيد ربي ومحبتو.",
+    "output": "حب النبي صلى الله عليه وسلم من تمام توحيد الله ومحبته."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "يجوز التبرع بقرنية العين لمريض أعمى بعد موتي؟",
+    "output": "هل يجوز التبرع بقرنية العين لمريض كفيف بعد وفاتي؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ياخي عورة المرا قدام المرا هي بيدها قدام الراجل؟",
+    "output": "هل عورة المرأة أمام المرأة هي نفسها أمام الرجل؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "المرا تنجم تلبس السروال الواسع ولا حرام؟",
+    "output": "هل يجوز للمرأة لبس السروال الواسع أم هو محرم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "صلاة الوتر واجبة",
+    "output": "صلاة الوتر واجبة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ربي يسمع دعانا في كل وقت، هو القريب والمجيب.",
+    "output": "الله يسمع دعاءنا في كل وقت، هو القريب والمجيب."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " ينجم الراجل يطلق مرتو على خاطرها ما تجيبش صغار؟",
+    "output": "هل يجوز للزوج طلاق زوجته لأنها لا تنجب؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نصلي ورا إمام عندو عقيدة مختلفة؟",
+    "output": "هل يجوز الصلاة خلف إمام يعتقد عقيدة مختلفة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "النار فيها 'السموم' و 'الحميم' و ظل من 'يحموم'.",
+    "output": "النار فيها السموم والحميم وظل من يحموم."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الورث في البلدان الي تمنع تعدد الزوجات؟",
+    "output": "ما حكم الميراث في البلدان التي تمنع تعدد الزوجات؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فين نلقى فتاوى الصلاة باللغة البربرية؟",
+    "output": "أين أحصل على فتاوى الصلاة باللغة البربرية؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " ينجم الصايم يستعمل مرهم موضعي باش ينقص لوجيعة؟",
+    "output": "هل يجوز للصائم استخدام المرهم الموضعي لتخفيف الألم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نستعمل خل التفاح اللي فيه ترسبات فلقاع؟",
+    "output": "هل يمكنني استعمال خل التفاح الذي يحتوي على ترسبات في القاع؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "خالد بن الوليد قداش من معركة خسرها؟",
+    "output": "كم عدد المعارك التي خسرها خالد بن الوليد؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حقوق الزوجة",
+    "output": "ما هي حقوق الزوجة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فمّا شي طريقة باش نحفظ الأذكار فيسع؟",
+    "output": "هل توجد طريقة لحفظ الأذكار بسرعة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "آية 'المال والبنون زينة الحياة الدنيا' تذكرنا بحقيقة الدنيا.",
+    "output": "آية 'المال والبنون زينة الحياة الدنيا' تذكرنا بحقيقة الدنيا."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فماش حديث يحكي على فضل صيام نهار عرفة؟",
+    "output": "هل يوجد حديث يتحدث عن فضل صيام يوم عرفة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "التدبر في آيات ربي يخلي الإيمان يزيد فلقلب.",
+    "output": "التدبر في آيات الله يزيد الإيمان في القلب."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم رفع اليدين",
+    "output": "ما حكم رفع اليدين"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " يورث الخو من بوه إذا كان عندو صغار حيين؟",
+    "output": "هل يرث الأخ من أبيه إذا كان له أبناء أحياء؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "لازم نأمنوا الي ربي هو اللي يعطي الحكم للي يحب.",
+    "output": "يجب أن نؤمن بأن الله يؤتي الملك من يشاء."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شجرة الزقوم هي طعام أهل النار، ربي يعافينا.",
+    "output": "شجرة الزقوم طعام الأثيم في النار، نسأل الله العافية."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شكونهم 'الخالدون' الي ذكرهم ربي فنار؟",
+    "output": "من هم 'الخالدون' الذين ذكرهم الله في النار؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم صيام الي يعاني من حساسية قوية تخليه يعطس ديما؟",
+    "output": "ما حكم صيام من يعاني من حساسية شديدة تجعله يعطس باستمرار؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الي طلق مرتو مبعديكا ادعى أنه كان يفذلك؟",
+    "output": "ما حكم من طلق زوجته ثم ادعى أنه كان يمزح؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم العبد اللي يرفع صوتو على أمو وقت الي يتغشش؟",
+    "output": "ما حكم الشخص الذي يرفع صوته على والدته عند الغضب؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الصبر عند الصدمة الأولى هو الي عليه الأجر.",
+    "output": "الصبر عند الصدمة الأولى هو الذي عليه الأجر."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "المريض اللي ما ينجمش يصوم شنوة يعمل؟",
+    "output": "المريض الذي لا يستطيع الصيام ماذا يفعل؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " ينجم الحاج يستعمل التاليفون في الطواف؟",
+    "output": "هل يجوز للحاج استخدام الهاتف أثناء الطواف؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "سيدنا عيسى نبي ربي موش ولده.",
+    "output": "سيدنا عيسى عليه السلام نبي الله وليس ابنه."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "أسامة بن زيد قداش كان عمرو كي ولى قايد جيش؟",
+    "output": "كم كان عمر أسامة بن زيد عندما تولى قيادة الجيش؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة هي فضائل قراية المعوذات قبل النوم؟",
+    "output": "ما هي فضائل قراءة المعوذات قبل النوم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " قطرة الوذن تفطر؟",
+    "output": "هل قطرة الأذن تفطر الصائم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نتيمم",
+    "output": "كيف أتيمم"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم اللي يوزع التمر والما فجبانة؟",
+    "output": "ما حكم من يوزع التمر والماء في المقبرة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نوكل شكون يرمي عليّ الجمرات؟",
+    "output": "هل يجوز أن أوكل أحداً ليرمي عني الجمرات؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم الدعا بهزان اليدين في وقت الطواف؟",
+    "output": "ما حكم الدعاء برفع اليدين أثناء الطواف؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نطلع زكاة التمر؟",
+    "output": "كيف أخرج زكاة التمر؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم ورثان الطفل الي تولد بعد موت بوه بأشهرة؟",
+    "output": "ما حكم ميراث الطفل الذي وُلد بعد وفاة أبيه بأشهر؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوّة مبطلات الوضو عند المالكية؟",
+    "output": "ما هي مبطلات الوضوء عند المالكية؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم عرس الراجل من محرم رضاعة يجهلها؟",
+    "output": "ما حكم زواج الرجل من محرم رضاعة لم يكن يعلمها؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فين نلقى أحكام صلاة الجمعة؟",
+    "output": "أين أجد أحكام صلاة الجمعة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " ينجم الحاج يكمل السعي في اليوم الثاني كان تعب؟",
+    "output": "هل يجوز للحاج إكمال السعي في اليوم الثاني إذا تعب؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجمو ندفنو الميت في صندوق؟",
+    "output": "هل يجوز دفن الميت في تابوت؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " تنجم لمرا تسافر للخارج للخدمة منغير إذن راجلها؟",
+    "output": "هل يجوز للمرأة السفر للخارج للعمل بدون إذن زوجها؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم ورثان الشخص الي يحمل جنسية دولتين؟",
+    "output": "ما حكم ميراث الشخص الذي يحمل جنسية دولتين؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم اللي تبرد أسنانها باش تفرّق بيناتهم للجمال؟",
+    "output": "ما حكم من تبرد أسنانها لإحداث فرجة بينها بقصد الجمال؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " نقدر نصوم يوم الشك؟",
+    "output": "هل يجوز صيام يوم الشك؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم استخدام الروبوتات في الرعاية الصحية للمسلمين؟",
+    "output": "ما حكم استخدام الروبوتات في الرعاية الصحية للمسلمين؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نسجد",
+    "output": "كيف أسجد"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الإيمان باليوم الآخر هو من أصول العقيدة.",
+    "output": "الإيمان باليوم الآخر من أصول العقيدة."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الله يعطيك الرحمة، شنو حكم صلاة النافلة في الظلام؟",
+    "output": "نال الله رحمتك، ما حكم صلاة النافلة في الظلام؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم الراجل اللي يفضل مرتو على أمو في المصروف وفي الكلمة؟",
+    "output": "ما حكم الرجل الذي يفضل زوجته على أمه في الإنفاق وفي المشورة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نكمل الصلاة كي ننسى ركعة؟",
+    "output": "كيف أكمل الصلاة إذا نسيت ركعة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ياخي عزل الراجل  وقت العلاقة باش ما تحبلش مرتو جائز؟",
+    "output": "هل عزل الرجل أثناء العلاقة لمنع حمل زوجته جائز شرعاً؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الدعا فصلاة بلوغة أجنبية؟",
+    "output": "ما حكم الدعاء في الصلاة بلغة أجنبية؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ما نجمش نصوم",
+    "output": "لا أستطيع الصيام"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نحج وأني موش معرسة؟",
+    "output": "هل يجوز الحج وأنا غير متزوجة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " الحج بدون محرم للمرا حلال؟",
+    "output": "هل يجوز الحج بدون محرم للمرأة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجمو ندفنو زوز عباد في قبر واحد بركة؟",
+    "output": "هل يجوز دفن شخصين في قبر واحد؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم لبسان الصباط في الجامع؟",
+    "output": "ما حكم لبس الحذاء في المسجد؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "فلقبر المومن يرقد نومة العروس الي يحبها أهلها.",
+    "output": "في القبر ينام المؤمن نومة العروس التي يحبها أهلها."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نرجع أيام رمضان الفايتة؟",
+    "output": "كيف تُقضى أيام رمضان الفائتة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ربي هو الواسع، وسع كرسيه السماوات والأرض.",
+    "output": "الله هو الواسع، وسع كرسيه السماوات والأرض."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم كريان خدام بشهرية أقل من الحد الأدنى القانوني؟",
+    "output": "ما حكم استئجار عمال بأجر أقل من الحد الأدنى القانوني؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "  نجم نصيم الاثنين والخميس ديما",
+    "output": "هل يجوز صيام الاثنين والخميس دائمًا؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "لازم نكونوا متأكدين الي قدر ربي ديما خير لينا.",
+    "output": "يجب أن نكون متيقنين أن قدر الله دائماً خير لنا."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " مثبت الرضاعة بتقطير الحليب في خشم الرضيع؟",
+    "output": "هل يثبت الرضاع بقطر اللبن في أنف الرضيع ؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم الإجهاض  قبل الأربعين يوم إذا كان فمة خطر علأم؟",
+    "output": "ما حكم الإجهاض قبل مرور أربعين يوماً إذا كان هناك خطر على حياة الأم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "سورة الرحمن هي عروس القرآن ووصفت النعيم بالباهي.",
+    "output": "سورة الرحمن عروس القرآن ووصفت النعيم وصفاً جميلاً."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "عذاب القبر حق، ولازم نستعيذوا منو في كل صلاة.",
+    "output": "عذاب القبر حق، ويجب أن نستعيذ منه في كل صلاة."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "سيدنا إسحاق هو ولد سيدنا إبراهيم وبشرت بيه الملايكة.",
+    "output": "سيدنا إسحاق هو ابن سيدنا إبراهيم وقد بشرت به الملائكة."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الزكاة على فلوس الشركة المشتركة؟",
+    "output": "ما حكم الزكاة على أموال الشركة المشتركة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "أهل النار وجوههم مسودة ملكفر والظلم.",
+    "output": "أهل النار وجوههم مسودة من الكفر والظلم."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ياخي المرا لازم تغطي 'ذقنها'  في الصلاة؟",
+    "output": "هل يجب على المرأة تغطية ذقنها في الصلاة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم تقسيم الميراث على دفعات خاطر ما فماش سيولة؟",
+    "output": "ما حكم توزيع ميراث الميت على أقساط بسبب عدم السيولة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ربي وصف القرآن بالبشرى للمومنين.",
+    "output": "وصف الله القرآن بأنه بشرى للمؤمنين."
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوّة حكم الي يقص الصيام منغير عذر؟",
+    "output": "ما حكم من قطع الصيام بغير عذر؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "الله يعطيك الرضا والقناعة",
+    "output": "منحك الله الرضا والقناعة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " ينجم المسلم يبيع منتجات علاجية منغير ترخيص طبي؟",
+    "output": "هل يجوز للمسلم بيع منتجات علاجية بدون ترخيص طبي؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم صيام الحبلى الي طبيبها يشجعها على الصيام؟",
+    "output": "ما حكم صيام الحامل التي يشجعها طبيبها على الصيام؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش يكون نعيم الجنة للمومنين؟",
+    "output": "كيف يكون نعيم الجنة للمؤمنين؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم صيام الي يرد مرة كل يوم بسبب مرض؟",
+    "output": "ما حكم صيام من يتقيأ مرة كل يوم بسبب مرض؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الفلوس المكتسبة بعد كتبان الوصية هل تشملها؟",
+    "output": "ما حكم الأموال المكتسبة بعد كتابة الوصية هل تشملها؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "كيفاش نطلع زكاة مال اليتيم؟",
+    "output": "كيف أخرج زكاة مال اليتيم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوما موجبات الغسل",
+    "output": "ما هي موجبات الغسل"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "نجم نربي قنفود  في الجنينة ولا حرام؟",
+    "output": "هل يمكنني تربية قنفذ في الحديقة أم أن ذلك محرم؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم القعدان بين السجدتين بطريقة موش معهودة؟",
+    "output": "ما حكم الجلوس بين السجدتين بطريقة غير معهودة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "  تنجم لمرا في الحيض تقرا القرآن مالتاليفون؟",
+    "output": "هل يجوز للمرأة الحائض قراءة القرآن من الهاتف؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم العرس من المرا التي ترضع طفل براني؟",
+    "output": "ما حكم الزواج من المرأة التي ترضع طفلًا أجنبيًا؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ينجم المسلم يحل حانوت بيعان لعب قمار ترفيهية؟",
+    "output": "هل يجوز للمسلم فتح محل لبيع ألعاب القمار الترفيهية؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا أركان الحج",
+    "output": "ما هي أركان الحج"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "لازمني نقرا سورة بعد الفاتحة",
+    "output": "يجب علي قراءة سورة بعد الفاتحة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنو حكم الي  دخل المسجد بعد ما بدا الإمام في الصلاة؟",
+    "output": "ما حكم من دخل المسجد بعد شروع الإمام في الصلاة؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوا حكم الإجارة",
+    "output": "ما حكم الإجارة"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "ياخي يجوز للمرا تعمل ربط رحم  باش ما عادش تجيب صغار بالكل؟",
+    "output": "هل يجوز للمرأة إجراء عملية ربط الرحم لمنع الإنجاب نهائياً؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": " ياخي الأعراف والعادات لها اعتبار في الفقه؟",
+    "output": "هل للأعراف والعادات اعتبار في الفقه الإسلامي؟"
+  },
+  {
+    "instruction": "Traduire la phrase suivante du dialecte tunisien vers l'arabe classique",
+    "input": "شنوة حكم ارضاعة من مرا مريضة بمرض صعيب؟",
+    "output": "ما حكم الرضاع من امرأة مصابة بمرض شديد؟"
+  }
+]
