@@ -48,7 +48,7 @@ def generate_causal(model, tokenizer, prompts, decoding, log_every=50):
         tokenizer.pad_token = tokenizer.eos_token
     outs, t0 = [], time.time()
     for k, prompt in enumerate(prompts):
-        enc = tokenizer(prompt, return_tensors="pt", add_special_tokens=False).to(device)
+        enc = tokenizer(prompt, return_tensors="pt").to(device)
         with torch.no_grad():
             gen = model.generate(
                 input_ids=enc["input_ids"],

@@ -38,6 +38,7 @@ early_stopping:
   patience: 1
   metric: eval_bleu              # 'eval_bleu' (char-level BLEU on val) or 'eval_loss'
   greater_is_better: true
+  metric_impl: generation    # or authors_proxy (D19)
 
 decoding:                    # paper 5.3
   do_sample: false

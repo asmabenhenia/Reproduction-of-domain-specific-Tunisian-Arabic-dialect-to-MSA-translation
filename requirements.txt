@@ -3,7 +3,7 @@
 # The two neural-metric packages are in requirements-neural.txt (installed separately).
 -r requirements-local.txt
 torch
-transformers>=4.44
+transformers>=4.46,<5   # 5.x breaks the AraT5v2 tokenizer (T5 Unigram TypeError)
 accelerate
 peft>=0.12
 bitsandbytes>=0.43      # 4-bit QLoRA: Linux + CUDA only (Kaggle yes, Windows PC no)

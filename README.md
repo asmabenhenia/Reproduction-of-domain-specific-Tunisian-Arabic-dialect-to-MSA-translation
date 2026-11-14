@@ -33,7 +33,8 @@ python -m tests.test_against_stored     # must print ALL CHECKS PASSED
 | `src/data.py`, `src/metrics.py` (lexical), `tests/` | done, validated against stored results |
 | `src/metrics.py` neural functions | written, not yet run (needs GPU/internet) |
 | `src/train_seq2seq.py`, `src/generate.py` | written, **not yet run on a GPU** (first Kaggle run = real test) |
-| `train_lora.py`, `stats.py` | next |
+| `src/train_lora.py` | written, unit-tested for data prep only, **not yet run on a GPU** |
+| zero-shot + beam CLI, `stats.py` | next |
 
 ## Kaggle: run AraT5v2 (cell by cell)
 ```python
@@ -43,4 +44,12 @@ python -m tests.test_against_stored     # must print ALL CHECKS PASSED
 !python -m tests.test_against_stored          # must print ALL CHECKS PASSED
 !python -m src.train_seq2seq --config configs/seq2seq_arat5v2.yaml --dry_run   # ~1-2 min smoke test
 !python -m src.train_seq2seq --config configs/seq2seq_arat5v2.yaml             # real run
+```
+
+## Kaggle: LoRA dry run, then ALLaM Config 2
+```python
+import os; os.environ["HF_TOKEN"] = "hf_..."      # or use Kaggle Secrets; needed for LLaMA 3 only
+!python -m src.train_lora --config configs/lora_allam7b_c2.yaml --dry_run     # smoke test
+!python -m src.train_lora --config configs/lora_allam7b_c2.yaml               # real run
+!python -m src.train_lora --config configs/lora_allam7b_c2.yaml --es_impl authors_proxy   # their val-BLEU proxy
 ```

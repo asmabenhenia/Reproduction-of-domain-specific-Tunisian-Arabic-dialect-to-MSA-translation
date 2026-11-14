@@ -21,6 +21,7 @@ import time
 import yaml
 
 from src import data
+from src.env import check_env
 from src.generate import generate_seq2seq, save_run
 
 
@@ -48,6 +49,7 @@ def run_one(cfg, lr, seed, args):
                               EarlyStoppingCallback, Seq2SeqTrainer, Seq2SeqTrainingArguments,
                               set_seed)
 
+    check_env()
     tr = cfg["training"]
     name = f"{cfg['name']}_lr{lr:g}_seed{seed}" + ("_dryrun" if args.dry_run else "")
     out_dir = os.path.join(args.out_root if not args.dry_run else "results/_dryrun", name)
