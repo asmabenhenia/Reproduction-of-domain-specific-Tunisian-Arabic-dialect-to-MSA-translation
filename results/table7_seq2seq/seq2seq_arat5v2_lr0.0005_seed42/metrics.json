@@ -1,0 +1,35 @@
+{
+  "metrics": {
+    "n": 450,
+    "bleu_char": 76.21,
+    "bleu_13a": 52.77,
+    "chrf_pp": 71.14,
+    "ter": 29.14,
+    "token_f1_set": 76.55,
+    "token_f1_multiset": 76.26,
+    "exact_match": 24.89,
+    "n_identity_pairs": 18,
+    "exact_match_excl_identity": 22.45
+  },
+  "meta": {
+    "run": "seq2seq_arat5v2_lr0.0005_seed42",
+    "model_id": "UBC-NLP/AraT5v2-base-1024",
+    "lr": 0.0005,
+    "seed": 42,
+    "effective_batch": 32,
+    "epochs_run": 8.0,
+    "best_checkpoint": "checkpoints/seq2seq_arat5v2_lr0.0005_seed42/checkpoint-200",
+    "best_val_loss": 0.7316546440124512,
+    "train_seconds": 339,
+    "generate_seconds": 17,
+    "n_test": 450,
+    "dry_run": false,
+    "decoding": {
+      "num_beams": 4,
+      "early_stopping": true,
+      "no_repeat_ngram_size": 3,
+      "length_penalty": 1.0,
+      "max_new_tokens": 128
+    }
+  }
+}

@@ -6,7 +6,7 @@ Columns: **Paper** = value printed in the paper, **Stored** = authors' result fi
 ## Table 7 -- Seq2Seq (BLEU char / chrF++ / TER)
 | System | Paper | Stored | Ours |
 |---|---|---|---|
-| AraT5v2 | 79.78 / 74.96 / 25.32 | 79.78 / 74.96 / 25.32 | _todo_ |
+| AraT5v2 | 79.78 / 74.96 / 25.32 | 79.78 / 74.96 / 25.32 | **76.21 / 71.14 / 29.14** (EM 24.89, TokenF1 76.55; ckpt step 200, seed 42, fp32) |
 | AraBART | 74.79 / 69.39 / 31.11 | **62.49 / 56.18 / 46.08** | _todo_ (lr 3e-5, 5e-5, 5e-4) |
 
 ## Table 6 -- zero-shot (BLEU / chrF++ / TER)

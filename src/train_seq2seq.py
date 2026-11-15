@@ -51,15 +51,18 @@ def run_one(cfg, lr, seed, args):
 
     check_env()
     tr = cfg["training"]
-    name = f"{cfg['name']}_lr{lr:g}_seed{seed}" + ("_dryrun" if args.dry_run else "")
+    name = (f"{cfg['name']}_lr{lr:g}_seed{seed}" + (f"_{args.tag}" if args.tag else "")
+            + ("_dryrun" if args.dry_run else ""))
+    splits_dir = args.splits_dir or cfg["splits_dir"]
+    save_steps = args.save_steps or tr["save_steps"]
     out_dir = os.path.join(args.out_root if not args.dry_run else "results/_dryrun", name)
     ckpt_dir = os.path.join(args.ckpt_root, name)
     print(f"\n{'=' * 70}\nRUN {name}\n{'=' * 70}", flush=True)
 
     set_seed(seed)
-    train = data.load_split(cfg["splits_dir"], "train")
-    val = data.load_split(cfg["splits_dir"], "val")
-    test = data.load_split(cfg["splits_dir"], "test")
+    train = data.load_split(splits_dir, "train")
+    val = data.load_split(splits_dir, "val")
+    test = data.load_split(splits_dir, "test")
     epochs = tr["max_epochs"]
     if args.dry_run:
         train, val, test, epochs = train[:64], val[:32], test[:16], 1
@@ -93,7 +96,7 @@ def run_one(cfg, lr, seed, args):
         predict_with_generate=False,          # selection on val loss (D12); faster
         logging_steps=20,
         eval_steps=2 if args.dry_run else tr["eval_steps"],     # dry run: exercise eval/save
-        save_steps=2 if args.dry_run else tr["save_steps"],
+        save_steps=2 if args.dry_run else save_steps,
         save_strategy="steps",
         save_total_limit=2,
         load_best_model_at_end=True,
@@ -132,6 +135,7 @@ def run_one(cfg, lr, seed, args):
         "best_val_loss": trainer.state.best_metric,
         "train_seconds": round(train_secs), "generate_seconds": round(time.time() - t1),
         "n_test": len(test), "dry_run": args.dry_run, "decoding": dec,
+        "splits_dir": splits_dir, "save_steps": save_steps, "n_train": len(train), "n_val": len(val),
     }
     result = save_run(out_dir, test, preds, config=cfg, meta=meta,
                       log_history=trainer.state.log_history)
@@ -151,6 +155,9 @@ def main():
     ap.add_argument("--sweep", action="store_true", help="run every lr in training.lr_sweep")
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--dry_run", action="store_true", help="64 train / 32 val / 16 test, 1 epoch")
+    ap.add_argument("--splits_dir", default=None, help="e.g. data/splits_authors (ablation)")
+    ap.add_argument("--save_steps", type=int, default=None, help="e.g. 100 = save at every eval")
+    ap.add_argument("--tag", default="", help="suffix for the run name, e.g. save100")
     ap.add_argument("--out_root", default="results/table7_seq2seq")
     ap.add_argument("--ckpt_root", default="checkpoints")
     args = ap.parse_args()

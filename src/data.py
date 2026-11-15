@@ -101,6 +101,21 @@ def make_splits(raw: list, fix_instructions: bool = True):
     return train, val, test
 
 
+def make_splits_authors(raw: list, fix_instructions: bool = True):
+    """The authors' ACTUAL protocol (from their scripts): same shuffle, 85/15 = 2550/450,
+    validation = test[:80] (a slice of the test set!). Only for the ablation that measures
+    what this leakage and the 150 extra training sentences are worth."""
+    raw = [dict(d) for d in raw]
+    if fix_instructions:
+        canon = canonical_instruction(raw)
+        for d in raw:
+            d["instruction"] = canon
+    random.seed(SEED)
+    random.shuffle(raw)
+    train, test = raw[:2550], raw[2550:]
+    return train, test[:80], test
+
+
 def load_split(split_dir: str, name: str) -> list:
     with open(os.path.join(split_dir, f"{name}.json"), encoding="utf-8") as f:
         return json.load(f)
@@ -132,16 +147,18 @@ def sha256(path: str) -> str:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--raw", default="data/raw/dataset_final_3000.json")
-    ap.add_argument("--out", default="data/splits")
+    ap.add_argument("--out", default=None)
+    ap.add_argument("--protocol", choices=["paper", "authors"], default="paper")
     args = ap.parse_args()
+    args.out = args.out or ("data/splits" if args.protocol == "paper" else "data/splits_authors")
 
     raw = load_raw(args.raw)
-    train, val, test = make_splits(raw)
+    train, val, test = make_splits(raw) if args.protocol == "paper" else make_splits_authors(raw)
     os.makedirs(args.out, exist_ok=True)
     for name, part in (("train", train), ("val", val), ("test", test)):
         with open(os.path.join(args.out, f"{name}.json"), "w", encoding="utf-8") as f:
             json.dump(part, f, ensure_ascii=False, indent=2)
-    manifest = {"seed": SEED, "raw_sha256": sha256(args.raw), "audit": audit(train, val, test)}
+    manifest = {"protocol": args.protocol, "seed": SEED, "raw_sha256": sha256(args.raw), "audit": audit(train, val, test)}
     with open(os.path.join(args.out, "split_manifest.json"), "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=2)
     print(json.dumps(manifest, indent=2))

@@ -1,0 +1,15 @@
+{
+  "protocol": "authors",
+  "seed": 42,
+  "raw_sha256": "0d958b5548aeb409aa03657fcd9571d9eba7cab39104189f2e4a3ec6804ef4d8",
+  "audit": {
+    "n_train": 2550,
+    "n_val": 80,
+    "n_test": 450,
+    "identity_pairs_all": 83,
+    "identity_pairs_test": 18,
+    "duplicate_outputs_all": 114,
+    "test_inputs_in_train_or_val": 80,
+    "test_outputs_in_train_or_val": 87
+  }
+}
