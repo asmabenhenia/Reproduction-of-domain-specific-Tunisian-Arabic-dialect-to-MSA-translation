@@ -21,7 +21,7 @@ training:
   max_target_length: 128
   precision: fp32
   eval_steps: 100
-  save_steps: 200
+  save_steps: 100                    # = eval_steps so the best evaluated model is kept (authors used 200; D21)
   # note:  fp32 training: T5 is unstable in fp16 and there is no bf16 on T4 (DECISIONS D9)
 
 decoding:                            # authors' code; not in paper (D8)

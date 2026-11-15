@@ -21,7 +21,7 @@ training:
   max_target_length: 128
   precision: fp32
   eval_steps: 100
-  save_steps: 200
+  save_steps: 100                    # = eval_steps so the best evaluated model is kept (authors used 200; D21)
   # note:  lr sweep to explain the 62.49 vs 74.79 conflict: run 3e-5, 5e-5 and 5e-4
 
 decoding:                            # authors' code; not in paper (D8)

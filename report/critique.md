@@ -39,3 +39,15 @@ Our independent code reproduces the authors' stored BLEU(char), chrF++, TER, Tok
 * Exact matches: authors 143, ours 112; only-authors 40, only-ours 9. Typical failure in ours: **omission** of a phrase (e.g. dropping "لغير المسلمين").
 * Our validation loss is lowest at step 300 but the kept checkpoint is step 200 (eval every 100 / save every 200, the authors' setting): the best evaluated model is not the one kept.
 * Candidate causes, to be separated by controlled runs: (1) checkpoint alignment (`--save_steps 100`); (2) the authors' protocol: 2550 training sentences and validation = test[:80]; (3) bf16 weights vs our fp32; (4) seed variance.
+
+### D2. Ablation results (AraT5v2, seed 42, same 450 test sentences)
+| Run | What changes | BLEU(char) | chrF++ | TER | EM | kept ckpt |
+|---|---|---|---|---|---|---|
+| First run | paper split, eval 100 / save 200 (authors' setting) | 76.21 | 71.14 | 29.14 | 24.89 | step 200 |
+| A | paper split, save every 100 | **78.21** | 73.00 | 27.65 | 27.11 | step 300 |
+| B | authors' protocol (2550 train, val = test[:80]), eval 100 / save 200 | **78.46** | 73.30 | 27.34 | 27.78 | step 200 |
+| Paper | | 79.78 | 74.96 | 25.32 | 31.78 | n/a |
+
+* The checkpoint-saving mismatch alone costs about 2.0 BLEU (A vs first run).
+* B mixes two changes: +150 training sentences and a validation set that overlaps the test set by 80 sentences. It still kept the step-200 checkpoint. Not yet separated; combining B with save-every-100 was not run.
+* Remaining gap to the paper after A: 1.57 BLEU, single seed; seed spread unmeasured.
