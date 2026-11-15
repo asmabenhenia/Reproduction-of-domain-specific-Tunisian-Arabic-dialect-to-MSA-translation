@@ -7,7 +7,9 @@ Columns: **Paper** = value printed in the paper, **Stored** = authors' result fi
 | System | Paper | Stored | Ours |
 |---|---|---|---|
 | AraT5v2 | 79.78 / 74.96 / 25.32 | 79.78 / 74.96 / 25.32 | **78.21 / 73.00 / 27.65** (EM 27.11; paper protocol, ckpt step 300, seed 42, fp32). Authors' save-every-200 setting: 76.21 / 71.14 / 29.14 |
-| AraBART | 74.79 / 69.39 / 31.11 | **62.49 / 56.18 / 46.08** | _todo_ (lr 3e-5, 5e-5, 5e-4) |
+| AraBART lr 5e-4 | 74.79 / 69.39 / 31.11 | **62.49 / 56.18 / 46.08** (lr unknown) | 73.11 / 67.16 / 34.40 (EM 21.11, ckpt step 100) |
+| AraBART lr 5e-5 | n/a | n/a | 75.41 / 70.36 / 29.62 (EM 25.56, ckpt step 400) |
+| AraBART lr 3e-5 | n/a | n/a | **75.47** / 70.26 / 29.90 (EM 25.56, ckpt step 600) |
 
 ## Table 6 -- zero-shot (BLEU / chrF++ / TER)
 | System | Paper | Stored | Ours |

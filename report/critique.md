@@ -51,3 +51,24 @@ Our independent code reproduces the authors' stored BLEU(char), chrF++, TER, Tok
 * The checkpoint-saving mismatch alone costs about 2.0 BLEU (A vs first run).
 * B mixes two changes: +150 training sentences and a validation set that overlaps the test set by 80 sentences. It still kept the step-200 checkpoint. Not yet separated; combining B with save-every-100 was not run.
 * Remaining gap to the paper after A: 1.57 BLEU, single seed; seed spread unmeasured.
+
+## E. AraBART learning-rate sweep (seed 42, fp32, paper protocol, same 450 test sentences)
+| lr | BLEU(char) | chrF++ | TER | EM | kept ckpt |
+|---|---|---|---|---|---|
+| 5e-4 (paper's stated lr) | 73.11 | 67.16 | 34.40 | 21.11 | step 100 (training diverged early) |
+| 5e-5 | 75.41 | 70.36 | 29.62 | 25.56 | step 400 |
+| 3e-5 | **75.47** | 70.26 | 29.90 | 25.56 | step 600 |
+| Paper Table 7 | 74.79 | 69.39 | 31.11 | n/a | n/a |
+| Authors' stored file | 62.49 | 56.18 | 46.08 | n/a | n/a |
+
+* **None of our three learning rates reproduces the stored 62.49** (our worst is 73.11).
+* **The paper's narrative is not supported:** 6.2 and 7.1 present 5e-4 as the rescue ("confirming the sensitivity of BART-based models to learning rate selection"). In our runs 5e-4 is the *worst* rate (best checkpoint at step 100) and 3e-5 / 5e-5 are 2.3 BLEU better and equally good. We see no strong sensitivity among the low rates.
+* **Hypothesis (untested yet): the authors' low-lr result came from pure-bf16 weights.** Their scripts load the model with `torch_dtype=bfloat16`. With bf16 weights (about 3 significant digits) Adam updates of size ~5e-5 can fall below the representable step for many weights, so training stalls; 5e-4 survives. That would turn an artefact of numeric precision into a reported "learning-rate sensitivity". Test: `--weights_dtype bf16` at lr 5e-5 vs 5e-4.
+* **Consequence for the headline comparison:** the paper's significance claim "ALLaM-7B vs AraBART +18.15 BLEU" is built on 62.49. Against our AraBART (75.4) the gap to AraT5v2-class systems is about 3-5 BLEU, not 17-18. The human-evaluation AraBART outputs (Table 11) come from an unknown run.
+* **Corpus bytes:** the corpus file in the GitHub repo has a different SHA-256 than the original (0d958b55... vs 417a6b68...), i.e. it was byte-modified (likely CRLF conversion). Content parses identically (all tests pass); `.gitattributes` now prevents further conversion.
+
+## F. Qualitative look at our AraBART outputs (seed 42, same test set)
+* **The paper's two AraBART anecdotes do not reproduce.** The "worship vs apostasy" reversal: our test item 13 (Yaqub's will) is translated correctly by all three AraBART runs. The "milk brother -> inheritance" hallucination: item 16 (`خويا مرضاعة`) is answered with a rendering that loses the milk-kinship concept ("أخوتي من أمي وبويا") rather than an inheritance question.
+* **Failure modes we do see:** (a) loss of the legal key concept (item 16); (b) entity confusion (item 448: "ابنتي رضعت من أبي", nonsense for a milk-kinship question; AraT5v2 gets it right); (c) **copying the dialect input unchanged** (item 370 for lr 3e-5 and 5e-5), which char-BLEU rewards because of the 57.4 copy baseline.
+* A crude screen for topic hallucination (output shares <20% of tokens with both source and reference) flags only 1-3 of 450 sentences per run, so unrelated-topic outputs are rare in our runs. Not comparable to the paper's 20% critical-error rate (which also counts omissions and entity errors); needs a proper annotation.
+* Run-to-run variation is large at sentence level: AraBART lr 3e-5 and 5e-5 give identical output for only 283 of 450 sentences, though their BLEU differs by 0.06.

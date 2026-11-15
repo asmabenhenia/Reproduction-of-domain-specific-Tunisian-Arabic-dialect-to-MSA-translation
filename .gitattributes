@@ -1,0 +1,3 @@
+# Keep the corpus byte-for-byte (no CRLF conversion on Windows)
+data/raw/*.json -text
+data/splits/*.json text eol=lf

@@ -14,6 +14,7 @@ os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")   # D17: keep effective batch
 
 import argparse
 import gc
+import shutil
 import inspect
 import json
 import time
@@ -51,7 +52,7 @@ def run_one(cfg, lr, seed, args):
 
     check_env()
     tr = cfg["training"]
-    name = (f"{cfg['name']}_lr{lr:g}_seed{seed}" + (f"_{args.tag}" if args.tag else "")
+    name = (f"{cfg['name']}_lr{lr:g}_seed{seed}" + ("_bf16w" if args.weights_dtype == "bf16" else "") + (f"_{args.tag}" if args.tag else "")
             + ("_dryrun" if args.dry_run else ""))
     splits_dir = args.splits_dir or cfg["splits_dir"]
     save_steps = args.save_steps or tr["save_steps"]
@@ -68,7 +69,9 @@ def run_one(cfg, lr, seed, args):
         train, val, test, epochs = train[:64], val[:32], test[:16], 1
 
     tokenizer = AutoTokenizer.from_pretrained(cfg["model_id"])
-    model = AutoModelForSeq2SeqLM.from_pretrained(cfg["model_id"])   # fp32 weights (D9)
+    bf16_w = args.weights_dtype == "bf16"
+    model = AutoModelForSeq2SeqLM.from_pretrained(
+        cfg["model_id"], torch_dtype=torch.bfloat16 if bf16_w else torch.float32)   # D9
     print(f"parameters: {sum(p.numel() for p in model.parameters()):,}  "
           f"| visible GPUs: {torch.cuda.device_count()}", flush=True)
 
@@ -91,8 +94,8 @@ def run_one(cfg, lr, seed, args):
         lr_scheduler_type=tr["lr_scheduler"],
         warmup_steps=tr["warmup_steps"],
         weight_decay=tr["weight_decay"],
-        fp16=(prec == "fp16"),
-        bf16=(prec == "bf16"),
+        fp16=(prec == "fp16") and not bf16_w,
+        bf16=(prec == "bf16") and not bf16_w,   # bf16 weights are trained as-is (no autocast), like the authors
         predict_with_generate=False,          # selection on val loss (D12); faster
         logging_steps=20,
         eval_steps=2 if args.dry_run else tr["eval_steps"],     # dry run: exercise eval/save
@@ -135,13 +138,15 @@ def run_one(cfg, lr, seed, args):
         "best_val_loss": trainer.state.best_metric,
         "train_seconds": round(train_secs), "generate_seconds": round(time.time() - t1),
         "n_test": len(test), "dry_run": args.dry_run, "decoding": dec,
-        "splits_dir": splits_dir, "save_steps": save_steps, "n_train": len(train), "n_val": len(val),
+        "splits_dir": splits_dir, "save_steps": save_steps, "weights_dtype": args.weights_dtype, "n_train": len(train), "n_val": len(val),
     }
     result = save_run(out_dir, test, preds, config=cfg, meta=meta,
                       log_history=trainer.state.log_history)
     print("\nTEST METRICS:", json.dumps(result["metrics"], ensure_ascii=False, indent=2), flush=True)
     print(f"saved -> {out_dir}", flush=True)
 
+    if not args.keep_checkpoints:          # Kaggle output limit is ~20 GiB; checkpoints are 1-4 GiB each
+        shutil.rmtree(ckpt_dir, ignore_errors=True)
     del trainer, model
     gc.collect()
     torch.cuda.empty_cache()
@@ -157,6 +162,9 @@ def main():
     ap.add_argument("--dry_run", action="store_true", help="64 train / 32 val / 16 test, 1 epoch")
     ap.add_argument("--splits_dir", default=None, help="e.g. data/splits_authors (ablation)")
     ap.add_argument("--save_steps", type=int, default=None, help="e.g. 100 = save at every eval")
+    ap.add_argument("--keep_checkpoints", action="store_true", help="do not delete checkpoints after the run")
+    ap.add_argument("--weights_dtype", choices=["fp32", "bf16"], default="fp32",
+                    help="bf16 = authors' pure-bf16 weights (tests the low-lr stall hypothesis)")
     ap.add_argument("--tag", default="", help="suffix for the run name, e.g. save100")
     ap.add_argument("--out_root", default="results/table7_seq2seq")
     ap.add_argument("--ckpt_root", default="checkpoints")

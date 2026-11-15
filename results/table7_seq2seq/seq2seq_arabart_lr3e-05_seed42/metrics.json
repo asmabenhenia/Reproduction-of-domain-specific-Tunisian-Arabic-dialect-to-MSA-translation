@@ -1,0 +1,39 @@
+{
+  "metrics": {
+    "n": 450,
+    "bleu_char": 75.47,
+    "bleu_13a": 52.24,
+    "chrf_pp": 70.26,
+    "ter": 29.9,
+    "token_f1_set": 75.96,
+    "token_f1_multiset": 75.83,
+    "exact_match": 25.56,
+    "n_identity_pairs": 18,
+    "exact_match_excl_identity": 23.15
+  },
+  "meta": {
+    "run": "seq2seq_arabart_lr3e-05_seed42",
+    "model_id": "moussaKam/AraBART",
+    "lr": 3e-05,
+    "seed": 42,
+    "effective_batch": 32,
+    "epochs_run": 10.0,
+    "best_checkpoint": "checkpoints/seq2seq_arabart_lr3e-05_seed42/checkpoint-600",
+    "best_val_loss": 0.7372509241104126,
+    "train_seconds": 195,
+    "generate_seconds": 8,
+    "n_test": 450,
+    "dry_run": false,
+    "decoding": {
+      "num_beams": 4,
+      "early_stopping": true,
+      "no_repeat_ngram_size": 3,
+      "length_penalty": 1.0,
+      "max_new_tokens": 128
+    },
+    "splits_dir": "data/splits",
+    "save_steps": 100,
+    "n_train": 2400,
+    "n_val": 150
+  }
+}

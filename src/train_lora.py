@@ -19,6 +19,7 @@ os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")   # D17
 
 import argparse
 import gc
+import shutil
 import inspect
 import json
 import time
@@ -270,7 +271,10 @@ def run(cfg, seed, args):
     }
     result = save_run(out_dir, test, preds, config=cfg, meta=meta, log_history=log)
     print("\nTEST METRICS:", json.dumps(result["metrics"], ensure_ascii=False, indent=2), flush=True)
-    print(f"saved -> {out_dir}\nadapter -> {adapter_dir}", flush=True)
+    shutil.copytree(adapter_dir, os.path.join(out_dir, "adapter"), dirs_exist_ok=True)   # small; needed for beam/COMET reruns
+    print(f"saved -> {out_dir}\nadapter -> {os.path.join(out_dir, 'adapter')}", flush=True)
+    if not args.keep_checkpoints:
+        shutil.rmtree(ckpt_dir, ignore_errors=True)
     del trainer, model, m
     gc.collect()
     torch.cuda.empty_cache()
@@ -283,6 +287,7 @@ def main():
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--dry_run", action="store_true", help="64 train / 32 val / 8 test, 1 epoch")
     ap.add_argument("--es_impl", choices=["generation", "authors_proxy"], default=None)
+    ap.add_argument("--keep_checkpoints", action="store_true", help="do not delete checkpoints after the run")
     ap.add_argument("--out_root", default="results/table8_lora")
     ap.add_argument("--ckpt_root", default="checkpoints")
     args = ap.parse_args()
