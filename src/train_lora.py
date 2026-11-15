@@ -223,8 +223,9 @@ def run(cfg, seed, args):
         greater_is_better=use_bleu, remove_unused_columns=False, dataloader_num_workers=0,
         report_to="none", seed=seed, **{strat_key: "steps"})
 
+    from transformers import Trainer as _HFTrainer
     tk = ("processing_class" if "processing_class" in
-          inspect.signature(build_trainer_class().__init__).parameters else "tokenizer")
+          inspect.signature(_HFTrainer.__init__).parameters else "tokenizer")
     extra = {}
     if use_bleu and impl == "generation":
         extra["bleu_fn"] = make_val_bleu_fn(tok, val, max_new_tokens=cfg["decoding"]["max_new_tokens"])
