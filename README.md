@@ -1,5 +1,7 @@
 # tun_msa_repro
 
+**To run everything: read `HOW_TO_RUN.md`** (one Kaggle notebook, `notebooks/kaggle_runner.ipynb`, set `SESSION` 1-5).
+
 Reproduction of *"Domain-specific Tunisian Arabic dialect-to-MSA translation in Islamic jurisprudence:
 a multi-paradigm benchmarking of Seq2Seq models and LoRA-adapted LLMs"* (JKSUCIS 2026, 38:959),
 built from the **paper's** specification, not from the authors' repository.
@@ -23,7 +25,7 @@ python -m tests.test_against_stored     # must print ALL CHECKS PASSED
 | Table 7 | AraT5v2, AraBART | `configs/seq2seq_*.yaml` |
 | Table 8/9 | 8 LoRA runs | `configs/lora_<model>_c<n>.yaml` |
 | Table 10 | best of each paradigm | built by analysis from the above |
-| Table 11 | human evaluation | `src/stats.py` on the expert files |
+| Table 11 | human evaluation | `python -m src.stats human` on `expert_evaluation/expert{1,2,3}.xlsx` |
 | Table 12 | COMET / COMETKiwi / BLEURT | `src/metrics.py` neural functions |
 | Table 13 | beam search | `configs/beam_allam7b_c2.yaml` |
 
@@ -34,7 +36,8 @@ python -m tests.test_against_stored     # must print ALL CHECKS PASSED
 | `src/metrics.py` neural functions | written, not yet run (needs GPU/internet) |
 | `src/train_seq2seq.py`, `src/generate.py` | written, **not yet run on a GPU** (first Kaggle run = real test) |
 | `src/train_lora.py` | written, unit-tested for data prep only, **not yet run on a GPU** |
-| zero-shot + beam CLI, `stats.py` | next |
+| `src/stats.py` (Table 11, kappas, Wilcoxon, bootstraps) | done, reproduces the paper's numbers (`python -m tests.test_stats_against_paper`) |
+| `src/generate.py` zero-shot + beam CLI, `src/neural_eval.py` | written, **not yet run on a GPU** (use `DRY_RUN = True` first) |
 
 ## Kaggle: run AraT5v2 (cell by cell)
 ```python

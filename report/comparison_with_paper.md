@@ -38,3 +38,6 @@ Columns: **Paper** = value printed in the paper, **Stored** = authors' result fi
 | AraBART | 0.8487 / 0.5452 / 0.6241 | _todo_ |
 
 ## Table 13 -- beam 4 vs greedy (ALLaM C2): BLEU 80.67 -> 69.38; EM 32.22 -> 6.89; human 96.0 -> 93.0
+
+## Table 11 -- human evaluation (recomputed from the expert Excel files)
+Pooled critical errors, kappas, Wilcoxon p-values reproduce the paper; four per-expert rows and 7 of 9 pairwise kappas do not (see critique.md section G). Report: `results/table11_human/human_report.json`.

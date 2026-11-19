@@ -72,3 +72,31 @@ Our independent code reproduces the authors' stored BLEU(char), chrF++, TER, Tok
 * **Failure modes we do see:** (a) loss of the legal key concept (item 16); (b) entity confusion (item 448: "ابنتي رضعت من أبي", nonsense for a milk-kinship question; AraT5v2 gets it right); (c) **copying the dialect input unchanged** (item 370 for lr 3e-5 and 5e-5), which char-BLEU rewards because of the 57.4 copy baseline.
 * A crude screen for topic hallucination (output shares <20% of tokens with both source and reference) flags only 1-3 of 450 sentences per run, so unrelated-topic outputs are rare in our runs. Not comparable to the paper's 20% critical-error rate (which also counts omissions and entity errors); needs a proper annotation.
 * Run-to-run variation is large at sentence level: AraBART lr 3e-5 and 5e-5 give identical output for only 283 of 450 sentences, though their BLEU differs by 0.06.
+
+## G. Human-evaluation audit (three expert Excel files; `python -m src.stats human`; test `python -m tests.test_stats_against_paper`)
+
+**Reproduces exactly from the Excel files:** pooled critical errors 5 / 14 / 30 of 150 (ALLaM / AraT5v2 / AraBART); Fleiss kappa 0.827 / 0.817 / 0.772, global 0.806; Wilcoxon p = 0.057 / 0.0013 / 0.043 with mean differences 0.187 / 0.433 / 0.247; critical-error CIs [0.0, 8.7] / [2.7, 17.3] / [10.0, 30.7] (the paper resampled *sentences*); relative critical-error reduction 64.3%; the AraT5v2-vs-AraBART paired bootstrap (+17.28, CI [15.8, 18.9]); Appendix C CI for ALLaM r=16 5 ep. The statistics code is therefore validated.
+
+**Inconsistencies inside the paper (the Excel files are the corrected data):**
+| Item | Paper | Excel |
+|---|---|---|
+| Table 11, ALLaM expert 3 (n2/n1/n0, cumulative) | 47/1/2, 95 | 48/0/2, 96 |
+| Table 11, AraT5v2 expert 3 | 41/5/4, 87 | 42/4/4, 88 |
+| Table 11, AraBART expert 1 | 33/8/9, 74 | 33/9/8, 75 |
+| Table 11, AraBART expert 3 | 35/5/10, 75 | 36/3/11, 75 |
+| Mean cumulative score (ALLaM / AraT5v2 / AraBART) | 96.00 / 86.67 / 74.33 | 96.33 / 87.00 / 74.67 |
+| Table B1 pairwise kappas | 9 rows | only 2 reproduce (ALLaM E1-E2, AraBART E1-E2); e.g. ALLaM E2-E3 paper kappa_w 0.850, Excel **1.000** (identical ratings) |
+| Range of kappa_w ("0.815 to 0.927") | | 0.905 to 1.000 |
+| Appendix B disagreeing sentences (AraT5v2 / ALLaM / AraBART) | 5 / 2 / 8 | 4 / 1 / 8 |
+The paper's note says the Fleiss values were corrected after a re-verification of the critical-error counts; the Table 11 rows, pairwise kappas and appendix lists look like they were not updated. The pooled critical counts are the same in both versions, so the headline conclusions are unaffected. The printed Po/Pe of two Fleiss rows (AraT5v2, ALLaM) do not satisfy (Po-Pe)/(1-Pe) = kappa.
+
+**Statistical reading:** the ALLaM-vs-AraT5v2 p = 0.057 uses scipy's normal approximation with ties; the exact test gives 0.078. Not significant either way, yet the mean-difference CI [0.027, 0.367] excludes zero: borderline, so the paper's wording "non-significant trend" is fair.
+
+**Provenance of what the experts judged:**
+* AraT5v2 outputs = the authors' stored AraT5v2 predictions for 50/50 sentences.
+* ALLaM outputs equal the stored ALLaM *Config 3* predictions for only 26/50, so they presumably come from Config 2 as stated (Config 2 predictions were not provided; unverifiable).
+* **AraBART outputs equal the stored 62.49-run predictions for only 12/50** (and our three runs for 19-21/50). The humans judged a different AraBART model from the one behind the 62.49 / significance test, so Section 6.9 mixes two AraBART runs.
+
+**Blindness:** the sheets as provided have column headers naming the systems ("Traduction AraT5v2 (A)", "Score (Allam)", "Traduction AraBart (C)") in a fixed order, while the paper says model identities were not disclosed. Caveat: these may differ from the version sent to the raters; worth asking the authors.
+
+**Design limits:** n = 50 sentences, a single sheet shown to all raters, no per-system randomisation of column order, annotators are students (the paper adds an independent fiqh review of the critical errors, which we cannot reproduce).

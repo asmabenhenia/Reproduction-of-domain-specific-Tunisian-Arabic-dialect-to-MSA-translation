@@ -77,10 +77,14 @@ def copy_baseline(inputs, refs) -> dict:
 
 
 # ---- neural metrics (lazy; GPU + downloads; untested in the sandbox) --------
+_CACHE = {}   # models are loaded once per process and reused for every run folder
+
 def comet_scores(srcs, mts, refs, batch_size=32, gpus=1):
     """wmt22-comet-da (paper 6.11). Returns (system_score, per_segment_scores)."""
     from comet import download_model, load_from_checkpoint
-    model = load_from_checkpoint(download_model("Unbabel/wmt22-comet-da"))
+    if "comet" not in _CACHE:
+        _CACHE["comet"] = load_from_checkpoint(download_model("Unbabel/wmt22-comet-da"))
+    model = _CACHE["comet"]
     data = [{"src": s, "mt": m, "ref": r} for s, m, r in zip(srcs, mts, refs)]
     out = model.predict(data, batch_size=batch_size, gpus=gpus)
     return out.system_score, out.scores
@@ -90,7 +94,9 @@ def cometkiwi_scores(srcs, mts, batch_size=32, gpus=1):
     """Reference-free COMETKiwi-DA. The HF repo is gated: accept the licence and
     log in with an HF token first."""
     from comet import download_model, load_from_checkpoint
-    model = load_from_checkpoint(download_model("Unbabel/wmt22-cometkiwi-da"))
+    if "kiwi" not in _CACHE:
+        _CACHE["kiwi"] = load_from_checkpoint(download_model("Unbabel/wmt22-cometkiwi-da"))
+    model = _CACHE["kiwi"]
     data = [{"src": s, "mt": m} for s, m in zip(srcs, mts)]
     out = model.predict(data, batch_size=batch_size, gpus=gpus)
     return out.system_score, out.scores
@@ -101,8 +107,10 @@ def bleurt_scores(mts, refs, batch_size=32, device="cuda"):
     import torch
     from bleurt_pytorch import BleurtForSequenceClassification, BleurtTokenizer
     name = "lucadiliello/BLEURT-20"
-    tok = BleurtTokenizer.from_pretrained(name)
-    model = BleurtForSequenceClassification.from_pretrained(name).to(device).eval()
+    if "bleurt" not in _CACHE:
+        _CACHE["bleurt"] = (BleurtTokenizer.from_pretrained(name),
+                            BleurtForSequenceClassification.from_pretrained(name).to(device).eval())
+    tok, model = _CACHE["bleurt"]
     scores = []
     with torch.no_grad():
         for i in range(0, len(mts), batch_size):

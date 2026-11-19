@@ -7,6 +7,7 @@ generate.py -- decoding helpers + run saving (paper 5.3 and 6.12).
 
 torch/transformers are imported lazily so save_run works on a machine without them.
 """
+import argparse
 import json
 import os
 import time
@@ -92,3 +93,82 @@ def save_run(out_dir, test_items, preds, config=None, meta=None, log_history=Non
 def load_predictions(path):
     with open(path, encoding="utf-8") as f:
         return [json.loads(line) for line in f]
+
+
+# ---------------------------------------------------------------- CLI
+def _load_causal_4bit(model_id, adapter=None, trust_remote_code=False):
+    """Base LLM in 4-bit (as in training), optionally with a LoRA adapter on top."""
+    import torch
+    from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+    token = os.environ.get("HF_TOKEN")
+    cdtype = torch.float16
+    bnb = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
+                             bnb_4bit_use_double_quant=True, bnb_4bit_compute_dtype=cdtype)
+    tok = AutoTokenizer.from_pretrained(model_id, token=token, trust_remote_code=trust_remote_code)
+    if tok.pad_token is None:
+        tok.pad_token = tok.eos_token
+    model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb, device_map={"": 0},
+                                                 torch_dtype=cdtype, token=token,
+                                                 trust_remote_code=trust_remote_code)
+    if adapter:
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, adapter)
+    model.config.use_cache = True
+    model.eval()
+    return model, tok
+
+
+def _read_cfg(path):
+    import yaml
+    with open(path, encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+
+def main():
+    from src import data
+    from src.env import check_env
+    ap = argparse.ArgumentParser(description="zero-shot (Table 6) and beam-search (Table 13) generation")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    z = sub.add_parser("zeroshot")
+    z.add_argument("--model", required=True, choices=["allam7b", "llama3_8b", "mistral7b"])
+    z.add_argument("--out_root", default="results/table6_zeroshot")
+    b = sub.add_parser("beam")
+    b.add_argument("--config", required=True, help="the LoRA config of the trained run, e.g. configs/lora_allam7b_c2.yaml")
+    b.add_argument("--adapter", required=True, help="results/table8_lora/<run>/adapter")
+    b.add_argument("--beams", type=int, default=4)
+    b.add_argument("--out_root", default="results/table13_beam")
+    for sp in (z, b):
+        sp.add_argument("--splits_dir", default="data/splits")
+        sp.add_argument("--dry_run", action="store_true", help="only 8 test sentences")
+    args = ap.parse_args()
+    check_env()
+
+    test = data.load_split(args.splits_dir, "test")
+    if args.dry_run:
+        test = test[:8]
+    t0 = time.time()
+    if args.cmd == "zeroshot":
+        cfg = _read_cfg(f"configs/lora_{args.model}_c2.yaml")
+        model, tok = _load_causal_4bit(cfg["model_id"], trust_remote_code=cfg.get("trust_remote_code", False))
+        dec = {"do_sample": False, "max_new_tokens": 128, "repetition_penalty": 1.1}   # paper 5.3
+        prompts = [data.zeroshot_prompt(args.model, d) for d in test]
+        name = f"zeroshot_{args.model}" + ("_dryrun" if args.dry_run else "")
+        meta = {"run": name, "model_id": cfg["model_id"], "decoding": dec, "prompt": "native per-model format (D5)"}
+    else:
+        cfg = _read_cfg(args.config)
+        model, tok = _load_causal_4bit(cfg["model_id"], adapter=args.adapter,
+                                       trust_remote_code=cfg.get("trust_remote_code", False))
+        dec = dict(cfg["decoding"], num_beams=args.beams)
+        prompts = [data.format_infer(d) for d in test]
+        name = f"beam{args.beams}_{cfg['name']}" + ("_dryrun" if args.dry_run else "")
+        meta = {"run": name, "model_id": cfg["model_id"], "adapter": args.adapter, "decoding": dec}
+    preds = generate_causal(model, tok, prompts, dec)
+    meta.update({"n_test": len(test), "generate_seconds": round(time.time() - t0), "dry_run": args.dry_run})
+    out_dir = os.path.join("results/_dryrun" if args.dry_run else args.out_root, name)
+    result = save_run(out_dir, test, preds, config=cfg, meta=meta)
+    print("\nTEST METRICS:", json.dumps(result["metrics"], ensure_ascii=False, indent=2))
+    print(f"saved -> {out_dir}")
+
+
+if __name__ == "__main__":
+    main()

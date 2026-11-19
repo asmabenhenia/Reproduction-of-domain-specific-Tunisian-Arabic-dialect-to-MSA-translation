@@ -18,6 +18,15 @@ def main():
             note = f"ckpt={ck}" + (f" r={t['r']} trainable={t['trainable_pct']}%" if "r" in t else "")
             print(f"{t.get('run', os.path.basename(os.path.dirname(f))):<52}{m['bleu_char']:>7}{m['chrf_pp']:>8}"
                   f"{m['ter']:>7}{m['token_f1_set']:>7}{m['exact_match']:>7}  {note}")
+    neural = []
+    for root in roots:
+        for f in sorted(glob.glob(os.path.join(root, "*", "neural_metrics.json"))):
+            n = json.load(open(f, encoding="utf-8"))
+            neural.append((os.path.basename(os.path.dirname(f)), n))
+    if neural:
+        print(f"\n{'run (neural metrics)':<52}{'COMET':>8}{'Kiwi':>8}{'BLEURT':>8}")
+        for name, n in neural:
+            print(f"{name:<52}{n.get('comet')!s:>8}{n.get('cometkiwi_da')!s:>8}{n.get('bleurt')!s:>8}")
     print(f"{'PAPER AraT5v2 (Table 7)':<52}{79.78:>7}{74.96:>8}{25.32:>7}{79.85:>7}{31.78:>7}")
     print(f"{'PAPER ALLaM-7B C2 (Table 8)':<52}{80.67:>7}{75.98:>8}{26.33:>7}{79.55:>7}{32.22:>7}")
 
