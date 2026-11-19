@@ -100,3 +100,8 @@ The paper's note says the Fleiss values were corrected after a re-verification o
 **Blindness:** the sheets as provided have column headers naming the systems ("Traduction AraT5v2 (A)", "Score (Allam)", "Traduction AraBart (C)") in a fixed order, while the paper says model identities were not disclosed. Caveat: these may differ from the version sent to the raters; worth asking the authors.
 
 **Design limits:** n = 50 sentences, a single sheet shown to all raters, no per-system randomisation of column order, annotators are students (the paper adds an independent fiqh review of the critical errors, which we cannot reproduce).
+
+## H. Seq2Seq systems are not clearly separated in our runs (first significance test on our own predictions)
+Paired bootstrap on char-BLEU, 1000 resamples, same 450 test sentences (`report/results_tables.md`):
+AraT5v2 (first run, 76.21) vs best AraBART (lr 3e-5, 75.47): difference +0.73, 95% CI [-0.53, +1.96], AraT5v2 better in 88.4% of resamples: **not significant**. Sentence-level: 26 sentences exactly right only for AraT5v2, 29 only for AraBART.
+The paper reports AraT5v2 vs AraBART +17.29 BLEU (p < 0.001) using the 62.49 AraBART run. With a properly trained AraBART the two models are statistically indistinguishable in this setting. To be re-checked with the final AraT5v2 run (78.21), whose predictions are produced in Kaggle session 2.

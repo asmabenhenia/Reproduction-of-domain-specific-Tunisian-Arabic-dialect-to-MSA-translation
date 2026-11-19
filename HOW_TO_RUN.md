@@ -37,3 +37,10 @@ Set `DRY_RUN = True` in cell 1 and run the notebook normally: every job runs on 
 
 ## If something goes wrong
 Copy the last 40 lines of the failing cell (or of the saved version's log) into the chat.
+
+## Optional: make the tables and plots yourself (on your PC, no GPU)
+```
+pip install -r requirements-local.txt
+python -m src.plot_curves      # curves.png in every run folder + results/table9_training_dynamics/table9.md
+python -m src.make_report      # report/results_tables.md (paper vs ours, bootstrap significance tests)
+```

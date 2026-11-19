@@ -37,6 +37,7 @@ python -m tests.test_against_stored     # must print ALL CHECKS PASSED
 | `src/train_seq2seq.py`, `src/generate.py` | written, **not yet run on a GPU** (first Kaggle run = real test) |
 | `src/train_lora.py` | written, unit-tested for data prep only, **not yet run on a GPU** |
 | `src/stats.py` (Table 11, kappas, Wilcoxon, bootstraps) | done, reproduces the paper's numbers (`python -m tests.test_stats_against_paper`) |
+| `src/plot_curves.py`, `src/make_report.py` | done, tested on the runs we have |
 | `src/generate.py` zero-shot + beam CLI, `src/neural_eval.py` | written, **not yet run on a GPU** (use `DRY_RUN = True` first) |
 
 ## Kaggle: run AraT5v2 (cell by cell)
